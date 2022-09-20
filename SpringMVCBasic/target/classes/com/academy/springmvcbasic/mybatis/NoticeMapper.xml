@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Notice">
+	
+	<!-- 수동매핑 
+		1)컬럼명과 DTO의 멤버변수가 일치하지않을때 
+		2) Join 구현시(1:1 association)
+		-->
+	<resultMap type="notice" id="noticeMap">
+		<id column="notice_id" property="notice_id"/>
+		<result column="title" property="title"/>
+		<result column="writer" property="writer"/>
+		<result column="content" property="content"/>
+		<result column="regdate" property="regdate"/>
+		<result column="hit" property="hit"/>
+	</resultMap>
+
+	<!-- 공통 코드 조각  -->
+	<sql id="selectCommon">
+		select notice_id, title, writer, content, regdate, hit from notice
+	</sql>
+	
+	<!-- 뉴스기사 모두 가져오기 --> <!--  만약 수동으로 입력해야된다면 -->
+	<select id="selectAll" resultMap="noticeMap">
+		<include refid="selectCommon"/>
+		order by notice_id desc
+	</select>
+	
+	<!-- 한건 가져오기 -->
+	<select id="select" resultMap="noticeMap" parameterType="int">
+		<include refid="selectCommon"/>
+		where notice_id =#{notice_id}
+	</select>
+	
+	<!-- 한건등록 -->
+	<insert id="insert" parameterType="Notice">
+		insert into notice(notice_id, title, writer ,content) values(notice_seq.nextval,#{title},#{writer},#{content})
+	</insert>
+		
+	<!-- 한건수정 -->
+	<update id="update" parameterType="Notice">
+		update notice set title=#{title}, writer=#{writer}, content=#{content} where notice_id=#{notice_id}
+	</update>
+	
+	<!-- 한건삭제 -->
+	<delete id="delete" parameterType="int">
+		delete from notice where notice_id=#{notice_id}
+	</delete>
+	
+</mapper>
