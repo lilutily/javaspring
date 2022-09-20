@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+// 쌍따옴표안에 복잡한 html퍼블리싱한다는것은 유지보수성이 너무 떨어짐
+// 게시판 스킨을 정의한다
+
+// 재사용 가능성이 높은 디자인에 대해 컴포넌트로 정의하자
+function Comments(props) {
+	return (
+		<tr>
+			<td>{props.msg}</td>
+			<td>{props.cwriter}</td>
+			<td>{propts.cregdate}</td>
+		</tr>
+	);
+}
+function printList() {
+	var tag=[];
+	for(var i=0; i<10; i++) {
+		tag.push(<Comments msg={"제목"} cwriter={"writer"} cregdate="232326" />);
+	}
+
+	// 재활용성이 없는 나머지 테이블에 대해서는 직접 작성
+	var table = (
+		<table width="100%" border="1px">
+			<tr>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>작성일</th>
+			</tr>
+			{tag}
+		</table>
+	);
+	var root= ReactDOM.createRoot(document.ElementById("listArea"));
+	root.render(table);
+}
+
+printList();
+</script>
+</head>
+<body>
+	<button onClick="printTable()">동적출력</button>
+	<div id="listArea">
+		
+	</div>
+	<div>
+	</div>
+</body>
+</html>
