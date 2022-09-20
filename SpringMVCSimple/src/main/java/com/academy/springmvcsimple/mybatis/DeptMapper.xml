@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Dept">
+
+	<!-- 부서등록 -->
+	<insert id="insert" parameterType="Dept">
+		insert into dept(deptno, dname, loc) values(dept_seq.nextval, #{dname}, #{loc})
+		
+		<!-- 
+				방금들어간 레코드의 pk가져올때 유용한 기능 줫나 많이씀!
+				왜 select max(deptno) from dept 쓰면안되나? -> 공유 사용자에 의해 손상될 수 있음
+				mysql : select last_insert_id() (나의 세션에서 증가시킨 pk만 가져옴)
+				oracle : select dept_seq.currval from dual (나의 세션에서 증가시킨 스퀀스만 가져옴)
+		 -->
+		<selectKey keyColumn="deptno" keyProperty="deptno" order="AFTER" resultType="int">
+			select dept_seq.currval as deptno from dual
+		</selectKey>
+	</insert>
+	<!-- 부서 한건 가져오기 -->
+	<select id="select" resultType="Dept" parameterType="int">
+		select*from dept where deptno=#{deptno}
+	</select>
+</mapper>
