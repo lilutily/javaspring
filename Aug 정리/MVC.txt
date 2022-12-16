@@ -1,0 +1,11 @@
+JavaEE (대규모)
+Model      : .java
+View        : .jsp
+Controller : .java(서블릿) 
+
+key-value로 if문 대체해보자
+
+
+Model1 : Model은 분리되었으나 View와 Controller분리되지못함 ( 중형 규모의 프로젝트)
+
+Model2 : MVC 패턴 (대규모)

@@ -1,0 +1,29 @@
+요청을 유지 - forward() view로 가져갈 것이 있을때
+
+요청을 끊기 - sendRedirect() 
+
+
+파일업로드 - Oreilly 출판사의 MultipartRequest (cos.jar)
+		apache.org = 공식적인 파일업로드 컴포넌트
+
+eclipse marketplace 에 sts (String suit) 설치
+설치전에...
+기존 spring 이 너무 어려움(진입장벽이 높음)
+	->  Legacy spring (4버전까지 지원해줌)
+	-> Spring Boot (자동)
+
+그래서 우리는 자동해주기 전 부터 맛보자
+		
+
+Spring : 스프링은 웹, 자바 둘다 지원 
+
+개발 기법 : AoP(Aspect Of Programming) -> 관점 지향 프로그래밍
+	  DI(Dependency Injection) -> 의존성 주입
+4먼저 다운하고 3하셈..
+<메이븐>
+spring core
+
+aop
+
+jdbc
+

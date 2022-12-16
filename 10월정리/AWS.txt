@@ -1,0 +1,101 @@
+S3 - 웹서버
+EC2 - WAS (웹 어플서버) (1개 무료)
+RDS - DB서버 (mariadb 1개 무료)
+
+1. 프론트서버(리액트)
+2. 백업
+3. 톰캣
+4. 데이터서버	
+
+
+
+===============================================================
+(AWS 로그인 시 루트 사용자)
+
+EC2 생성하기 
+
+EC2 검색 -> 인스턴스 클릭 -> 인스턴스 시작 -> 이름정하고 아마존 리눅스 프리티어(무료로할것)
+인스턴스 유형 t2 micro(프리티어)
+★ 키 페어 생성하기 -> 생성하면 다운이 되는데 보관 잘할 것
+키 페어 이름작성, 유형은 RSA, 프라이빗 키 파일 형식은 .ppk
+<pem - 리눅스에서 원격으로 접속할때>
+<ppk - 윈도우에서 원격으로 접속할때>
+
+utf8mb4 - 이모티콘도 저장가능
+
+mysql -u lilutily -p -h demo-app-was-database.ct0gzin6eieu.ap-northeast-1.rds.amazonaws.com
+vi db_info.properties i 클릭 내용복붙하고 esc :wq 엔터
+
+
+권한이 없다고 뜰때....
+관리자 권한으로 바꾼다 sudo su
+
+cd webapps/
+rm -tf ROOT
+ls
+cp /usr/local/project/SL ~war .
+
+업데이트 , 에러 -> 코드를 고쳐야함
+
+인텔리제이로 코드수정 - > 깃에 푸시 -> ec2인스턴스 안에서 깃 풀 -> 재비들 -> ROOT.war 재배포
+-> 쉘 스크립트
+
+
+
+cd conf/
+ls
+cd .. 
+cd bin/
+/usr/local/project/SL_Final_project/src/main/resources
+
+같은 경로면 ./startup.sh 	~~ ./shutdown.bat
+
+usr/bin/tomcat/logs
+logs # tail -200f catalina.out
+
+/usr/local/project 	
+
+touch deploy.sh 생성
+
+#!/bin/bash
+#!
+project_name=SL_final_project
+
+echo "# start deployment!!"
+
+echo "# shutdown tomcat"
+cd /usr/local/tomcat/bin
+./shutdown.sh
+
+rm -rf /usr/local/tomcat/webapps/ROOT
+
+cd /usr/local/project/${project_name}
+
+echo "# git pull!!"
+git pull origin master
+
+echo "# start build!"
+./gradlew clean
+./gradlew build
+
+echo "# move ROOT.war"
+cd /usr/local/tomcat/webapps
+cp /usr/local/project/${project_name}/build/libs/ROOT.war .
+
+echo "# tomcat start!!"
+cd /usr/local/tomcat/bin
+./startup.sh
+
+echo "# finish deployment..."
+
+exit 0
+
+vi deploy.sh		<수정시 i> 수정 후 esc : wq
+./deploy.sh
+
+
+PC IP : 192.168.25.62
+AWS IP: 3.114.138.88
+
+인스턴스 : 종료를 누르면 다 날라감(바꾸는 작업을 할거면 중지를 할 것)
+탄력적 IP 지우는 방법 : 작업 -> 연결해제 -> 릴리스

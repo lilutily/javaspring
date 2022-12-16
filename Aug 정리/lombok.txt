@@ -1,0 +1,1 @@
+shift 우클릭 파워쉘 열고 java -jar .lom tab

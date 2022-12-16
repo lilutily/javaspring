@@ -1,0 +1,19 @@
+스프링이 지원하는 DB연동 기술
+mybatis
+jdbc
+hibernate
+why? --> 트랜잭션
+원래 2.5 버전대 이전까지는 xml주로 처리함(선언적 방법)
+--> 3.0대 부터 본격적으로 @어노테이션 지원
+
+ORM - hibernate
+
+SQLMapper - mybatis		select * from board
+
+spring mvc
+spring jdbc
+mybatis core , mybatis spring
+lombok
+oraclejdbc
+apache commons fileupload 이거있나?
+jackson databind

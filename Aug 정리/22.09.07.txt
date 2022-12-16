@@ -1,0 +1,9 @@
+			insert(Dept dept)
+Dept ----- mybatisMapper <-------- MybatisDeptDAO		
+
+			insert(Emp emp)
+Emp ----- mybatisMapper <-------- MybatisEmpDAO	
+
+Controller -> Service -> DAO -> Mapper
+
+서비스가 없으면 컨트롤러에 비중이 커짐 -> 그러면 모델이 되어버림	 

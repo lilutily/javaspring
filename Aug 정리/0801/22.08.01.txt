@@ -1,0 +1,74 @@
+cd D:\javase_workspace\project0801\src\gui
+d:
+D:\javase_workspace\project0801\src\gui>javac -d  D:\javase_workspace\project0801\bin ChatMain.java
+
+java gui.ChatMain
+
+컴파일
+javac -d bin 경로 파일명
+java 패키지.클래스명
+
+도구->기본설정->도구->사용자도구->그룹이름
+
+ctrl+1
+
+
+java
+exe-> 인수내용묻기.확장자를뺀이름
+gui 입력
+
+ctrl+2
+
+오라클 설치 11g express
+4G까지 지원 
+사용자명 및 설치경로에 한글이없어야 한다
+- 눈에 보이지 않으며, 백그라운드에서 실행되는 프로그램 : 서비스
+서비스에 OracleServiceXE -> 실행아 되어야함 -> 자동에서 수동으로 바꿨음
+Administrator
+
+
+
+mysql 설치 5.7.x 버전
+
+sqlplus system/1234
+
+오라클 족보
+sys
+system
+
+
+sqlplus sys/ as sysdba
+비밀번호는 엔터로 가볍게 무시
+
+show user
+alter user system identified by 1234; -> 변경
+
+conn system/1234-> 안나가고 변경
+
+C:\oraclexe\app\oracle\oradata\XE
+
+create tablespace javastudy datafile 'C:\oraclexe\app\oracle\oradata\XE\javastudy.dbf'
+  size 2m;
+
+alter user java default tablespace javastudy quota unlimited on javastudy;
+(개발자에게 개발할수있는 전체 권한을 줌)
+
+grant create session to java;
+(출입 허가)
+
+grant create table to java;
+(테이블 생성 허가)
+
+run이나 /를 사용하면 앞에써둔 명령어 다시 실행
+
+spool '저장경로\저장이름'; // 자동으로 저장할거임
+spool 'D:\javase_workspace\project0801\sql\1일차실습.txt';
+
+cmd를 끄기 전
+spool off
+사용 후 종료
+
+서비스 mysql5.7 수동으로 변경
+
+mysql -h localhost -u root -p
+1234

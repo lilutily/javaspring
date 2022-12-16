@@ -1,0 +1,18 @@
+이클립스 설치
+
+설치 후 
+eclipse.ini를 메모장이나 다른 프로그램으로 열고
+-vm의 jdk버전을 pc에 깔린 jdk로 바꾼다
+cmd 에 java -version으로 사용중인 버전을 확인하고
+위치를 모르겠으면 where java를 입력하여 위치를 찾는다
+bin디렉토리까지 경로를 복사하여 붙여 넣는다 + \javaw.exe
+여기서 오류가 발생할 수 있으므로 -vm을 맨위로 올린다
+
+open jdk는 1.8인데 이게 버전차이가 많이 나서 Dosgi.requiredJava을 8로 바꿈
+---> 너무 구버전이라 openjdk 11로 변경.. msi 파일로 다운 받는게 편함
+
+preferences -> java -> compiler -> level 맞추기 (현재는 11을 쓴다)
+General -> workspace -> utf-8로 변경
+Web -> cssfile,html files, jsp files ->utf-8
+
+메이븐 레파시토리에서 spring mvc 4.3.30

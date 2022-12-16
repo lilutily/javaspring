@@ -1,0 +1,16 @@
+다이어리
+- 달력+DB연동
+
+Spring Boot
+maven --> Gradle (android studio)
+
+shift 우클릭
+ls
+java -jar |sp tab
+SQLPlus -> command 기반
+iSqlPlus -> web 8080
+오라클이랑 중복 
+톰캣 서버 주소를 변경해야됨
+근데 어케? 내장톰캣인데
+src/main/resources application 에서 server.port=번호
+등록

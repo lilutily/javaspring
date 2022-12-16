@@ -1,0 +1,36 @@
+DBeaver 22.2.0
+MyBatis Generator 1.4.1
+MyBatipse 1.2.5
+TM Terminal 10.7
+STS 4
+
+Enterprise Java Beans EJB (트랜잭션(xml), 보안처리, 분산)
+로드존슨 Expert One on One -> JavaEE
+Plain Old Java Object+XML :
+
+스프링을 이루는 2개의 개발원리, 양대축
+
+DI(Dependency Injection) : 의존성 주입 -> 결합도 약화
+
+AOP(Aspect Oriente Programming) : 관점지향 프로그래밍 -> 결합도를 완전히 없앤다
+
+			<스프링 MVC의 구조>
+				1,2		----> 3, 4
+			<DIspatcherServlet>	----> ListContoller
+						<-----	(key(jsp))
+
+						ViewResolver - InternalResourceViewResolver
+HandlerMapping   - SimpleUrlHandlerMapping
+		- BeanNameUrlHandlerMapping
+		- DefaultAnnotationHandlerMapping
+
+
+			<WEB/INF/dispather-servlet.xml>
+
+
+Model And View
+(저장)	   (이름)->InternalResourceViewResolver (접두사, 접미어 해석)
+
+해석이후 DispatcherServlet에게 전달
+
+

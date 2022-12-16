@@ -1,0 +1,37 @@
+상품관리(등록,수정,삭제,목록)
+주문관리(주문, 결제)
+고객관리(로그인, 회원가입,회원탈 mypage... 등)
+
+메뉴바 카테고리
+상의, 하의, 신발, 악세서리
+
+그러면 DB로 설계를 하면
+
+위의 카테고리 4개를 하나로 만들면? 
+					<product>
+<top_category>  <sub_category> 	 <product_id> <product_name> <brand> <discount> <price> <memo>  <detail>  <size>  <color>  <stock>	
+상의					1	G005	BlackYark 	200000	250000	  	95,100,105	9999
+
+
+이러면 size,color같은 경우 정규화에 적합하지 않음 --> 따로빼서 만들어야됨
+stock(살수있는개수) 같은 경우 
+
+top_category, sub_category 도 중복이 많이 때문에 따로 빼서 만들어야됨
+
+<TopCategory>
+<topcategory_id><category_name>
+
+<product>
+<product_id><product_name><brand><discount><price><memo><detail>
+
+
+product -------------- orderdetail
+
+n개월전 주문 --> product를 삭제하면? orderdetail에 묶여 있음
+주문내역
+바지~
+
+orderdetail(상품명, 가격, 등 product의 정보를 orderdetail에 넣어버림)
+--------------------------------------------------------------------------------
+삭제 - 비동기 - form 전송 (json으로 전송)
+수정 - 비동기 이미지 업로드

@@ -1,0 +1,8 @@
+SPA 게시판
+- 비동기
+- React
+- boot
+- mybatis -----> mapper 인터페이스(쿼리)
+- hibernate ---> JpaRepository 인터페이스(객체) ORM
+
+

@@ -1,0 +1,53 @@
+1. 명사추출후 빈도계산
+raw_moon <- readLines("spring.txt", encoding = "UTF-8")
+
+library(stringr)
+library(textclean)
+moon <- raw_moon %>%
+  str_replace_all("[^가-힣]", " ") %>% 
+  str_squish() %>%
+  as_tibble()
+moon
+
+명사 추출
+
+extractNoun(text$value)
+
+library(tidytext)
+
+moon %>%
+  unnest_tokens(input = value,
+                output = word,
+                token = extractNoun) %>%
+count(word, sort = T) %>%
+filter(str_count(word) > 1)
+
+
+2. 상위 20개 단어 추출
+top20 <- word_noun %>%
+head(20)
+
+3. 막대 그래프
+library(ggplot2)
+ggplot(top20, aes(x = reorder(word, n), y = n)) +
+geom_col() +
+coord_flip() +
+geom_text(aes(label = n), hjust = -0.3) +
+labs(x = NULL) +
+theme(text = element_text(family = "nanumgothic"))
+
+4. 워드 클라우드
+
+# 폰트 설정	안해도될듯?
+library(showtext)
+font_add_google(name = "Black Han Sans", family = "blackhansans")
+showtext_auto()
+
+
+library(ggwordcloud)
+ggplot(word_noun, aes(label = word, size = n, col = n)) +
+geom_text_wordcloud(seed = 1234, family = "blackhansans") +
+scale_radius(limits = c(3, NA),
+range = c(3, 15)) +
+scale_color_gradient(low = "#66aaf2", high = "#004EA1") +
+theme_minimal()

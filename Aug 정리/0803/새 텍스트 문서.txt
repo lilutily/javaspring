@@ -1,0 +1,27 @@
+HTML 특징
+- 프로그래밍 언어가 아닌 문서일 뿐이다.
+- 서식 등의 효과를 보려면, 반드시 정해진 형식의 태크(<>)를 이용해야한다.
+  특히 대상 컨텐츠에 태그를 적용하는 것을 MARKUP이라고 한다.
+- 그냥 문서일 뿐이므로, 디자인 적 한계가 있다.
+	EX) 폰트의 크기가 제한적
+	이 문제를 해결하기 위해 고안된 기술이 CSS(Cascading Style Sheet)
+	CSS는 프로그래밍 언어? -> X
+- 현업에서는 CSS 전문가를 퍼블리셔라고 함.
+- HTML은 사실 문법을 잘 지키지 않아도 에러는 나지않는다. 그 대신 원하는 문서 형식으로 표현할 수 없다.
+
+고객 -> 회사에 의뢰 -> 요구사항 분석 -> 기획서 
+
+설치할때 경로는 깊숙하게 하지말것 + 띄워쓰기 없어야됨 + 한글 없어야됨
+
+웹 어플리케이션을 만들어보자,,,
+
+Tomcat-> conf-> server -> editplus로 연결
+
+xml은 설정용이다.
+
+<Host name="127.0.0.1"  appBase="webapps" unpackWARs="true" autoDeploy="true">
+<Context path="" docBase="D:\html_workspace\Aug0803" reloadable="true"></Context> 
+</Host>
+
+
+
